@@ -7,8 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "APIClient.h"
+#import "Weather.h"
 
 @interface ViewController ()
+
+//@property (strong, nonatomic) APIClient *client;
 
 @end
 
@@ -16,14 +20,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    [self getCurrentWeather];
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)getCurrentWeather {
+    [APIClient getCurrentWeatherWithCityName:@"San_Francisco" andState:@"CA" success:^(Weather *weather) {
+        //Handle the success weather object
+        NSLog(@"The temperature is: %@", weather.temp);
+        NSLog(@"The current weather condition is: %@", weather.condition);
+    }];
+    
 }
+
 
 
 @end
