@@ -19,6 +19,7 @@ NSString *myKey = @"ba8650a653cc9468";
                            
     AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
     
+    
     [sessionManager GET: urlString parameters:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
         if(responseObject) {
